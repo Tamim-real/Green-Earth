@@ -4,8 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth</title>
+    <!-- daisyUI and Tailwind -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- google font integreted -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <header class="font-[Geist]">
+        <nav class="flex justify-between bg-[#15803D] px-5 py-3">
+            <div class="flex items-center">
+                <img src="./assets/logo.png" class="w-11" alt="logo">
+                <h1 class="text-white text-xl font-bold">Green Earth</h1>
+            </div>
+            <div class="flex gap-5 items-center text-white">
+                <p class=" hidden lg:block">About</p>
+                <p class=" hidden lg:block">Gallery</p>
+                <p class=" hidden lg:block">Plant a Tree</p>
+            </div>
+            <div>
+                <button class="bg-[#FACC15] text-[#15803D] rounded-3xl px-4 h-[38px] text-xs font-semibold ">Plant a Tree</button>
+            </div>
+        </nav>
+    </header>
+    <main class="font-[Inter]">
+        <section class="hero flex bg-[#CFF0DC] justify-between">
+            <div class=" hidden lg:block">
+                <img src="./assets/hero-leaf1.png"  alt="">
+            </div>
+            <div class="text-center space-y-4 my-6">
+                <h1 class="text-3xl lg:text-5xl font-bold">Plant a Tree, Grow a Future</h1>
+                <P class="lg:text-xs text-gray-700">Join our mission to plant 1 million trees and make the Earth greener for future <br>generations.</P>
+                <button class="bg-[#FACC15] text-[#15803D] rounded-3xl px-4 h-[38px] text-xs font-semibold ">Get Involved</button>
+            </div>
+            <div class=" hidden lg:block">
+                <img src="./assets/hero-leaf2.png" alt="">
+            </div>
+        </section>
+        <section class="bg-[#CFF0DC60]">
+
+            <div class=" w-11/12 mx-auto pt-[70px]">
+                
+                <h1 class="text-3xl font-bold text-center">Choose Your Trees</h1>
+                <div class="flex flex-col lg:flex-row">
+                 <div>
+                <h2 class="text-xl font-semibold mt-4">Categories</h2>
+                <div id="category-container" class="space-y-2 ">
+                    <button class="space-y-2">All Trees</button>
+                </div>
+            </div>
+                <div id="card-container" class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10">
+                     
+                </div>
+                </div>
+            
+           
+            </div>
+
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
