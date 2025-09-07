@@ -1,3 +1,103 @@
+const cartContainer = document.getElementById('cart-container')
+
+const cartItems = [];
+
+
+const loadAllPlants = ()=>{
+  fetch('https://openapi.programming-hero.com/api/plants')
+  .then((res)=> res.json())
+  .then(data=> displayAllPlants(data.plants))
+}
+
+const displayAllPlants =(allPlants)=>{
+      const cardContainer = document.getElementById('card-container');
+    
+      for(const plants of allPlants){
+        const card = document.createElement('div');
+        card.innerHTML = `
+         <div class="card bg-base-100 w-80 h-96 shadow-sm">
+  <figure>
+    <img
+      src="${plants.image}"
+      alt="Shoes" class="mt-5" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      ${plants.name}
+      
+    </h2>
+    <p>${plants.description}</p>
+    <div class="card-actions justify-between">
+        <div class="badge  bg-[#CFF0DC] text-[#15803D]">${plants.category}</div>
+       <div> <p> ${plants.price}</p></div>
+      
+    </div>
+    <button class="bg-[#15803D] text-white rounded-3xl px-4 h-[38px] text-xs font-semibold ">Add to Cart</button>
+  </div>
+  
+</div>
+        `
+
+        cardContainer.append(card);
+
+      }
+
+
+
+
+}
+
+document.getElementById('card-container').
+addEventListener('click', (e)=>{
+  if(e.target.innerText === 'Add to Cart'){
+    handleCartItems(e)
+    
+   
+    
+    
+  }
+ 
+  
+  
+})
+
+const handleCartItems=(e)=>{
+ const title = e.target.parentNode.children[0].innerText;
+
+    const price = e.target.parentNode.children[2].parentNode.children[2].children[1].children[0].innerText;
+
+    cartItems.push({
+      title : title,
+      price : price
+    })
+
+    console.log(cartItems);
+
+    showCartItems(cartItems)
+}
+
+const showCartItems=(cartItems)=>{
+    cartContainer.innerHTML ='';
+    cartItems.forEach(item =>{
+      const cartDiv = document.createElement('div');
+      
+
+      cartDiv.innerHTML =`<div class="bg-[#CFF0DC] px-7 py-3 rounded-lg flex justify-between items-center gap-10 mb-5">
+                        <div>
+                            <h2>${item.title}</h2>
+                        <p>৳<span>${item.price}</span></p>
+                        </div>
+                        <div><span>&times;</span></div>
+                    </div>
+      
+      `
+
+      cartContainer.append(cartDiv)
+    })
+}
+
+loadAllPlants()
+
 const loadCategories=()=>{
     fetch('https://openapi.programming-hero.com/api/categories')
     .then((res) => res.json())
@@ -35,7 +135,7 @@ const displayCards =(details)=>{
        <div> <p>৳<span>${detail.price}</span></p></div>
       
     </div>
-    <button class="bg-[#15803D] text-white rounded-3xl px-4 h-[38px] text-xs font-semibold ">Add to Cart</button>
+    <button onclick="cartItem(${detail.id})" class="bg-[#15803D] text-white rounded-3xl px-4 h-[38px] text-xs font-semibold ">Add to Cart</button>
   </div>
   
 </div>
@@ -43,8 +143,11 @@ const displayCards =(details)=>{
 
         cardContainer.append(card);
     }
+
+   
     
 }
+
 
 const displayCategories=(catagories)=>{
         const catergoryContainer = document.getElementById('category-container');
@@ -61,6 +164,19 @@ const displayCategories=(catagories)=>{
             catergoryContainer.append(btnDiv)
             
         }
+
+         catergoryContainer.addEventListener('click', (e)=>{
+            const allbtn = document.querySelectorAll('button');
+            allbtn.forEach(btn =>{
+              btn.classList.remove('bg-[#15803D]', "text-white")
+            })
+
+
+            if(e.target.localName === "button"){
+              e.target.classList.add('bg-[#15803D]', "text-white")
+            }
+        
+    })
         
 }
 
