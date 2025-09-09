@@ -16,20 +16,38 @@
 </head>
 <body>
     <header class="font-[Geist]">
-        <nav class="flex justify-between bg-[#15803D] px-5 py-3">
-            <div class="flex items-center">
-                <img src="./assets/logo.png" class="w-11" alt="logo">
-                <h1 class="text-white text-xl font-bold">Green Earth</h1>
-            </div>
-            <div class="flex gap-5 items-center text-white">
-                <p class=" hidden lg:block">About</p>
-                <p class=" hidden lg:block">Gallery</p>
-                <p class=" hidden lg:block">Plant a Tree</p>
-            </div>
-            <div>
-                <button class="bg-[#FACC15] text-[#15803D] rounded-3xl px-4 h-[38px] text-xs font-semibold ">Plant a Tree</button>
-            </div>
-        </nav>
+        <div class="navbar bg-[#15803D] shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a>About</a></li>
+        <li>
+          <a>Gallery</a> 
+        </li>
+        <li><a>Plant a Tree</a></li>
+      </ul>
+    </div>
+    
+    <a class="btn btn-ghost text-white text-xl font-bold">Green Earth</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 text-white ">
+      <li><a>About</a></li>
+      <li>
+        <a>Gallery</a> 
+      </li>
+      <li><a>Plant a Tree</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+   <button class="bg-[#FACC15] text-[#15803D] rounded-3xl px-4 h-[38px] text-xs font-semibold btn">Plant a Tree</button>
+  </div>
+</div>
     </header>
     <main class="font-[Inter]">
         <section class="hero flex bg-[#CFF0DC] justify-between">
@@ -50,6 +68,9 @@
             <div class=" w-11/12 mx-auto pt-[70px]">
                 
                 <h1 class="text-3xl font-bold text-center">Choose Your Trees</h1>
+                <section id="spinner" class="flex justify-center items-center mt-5 hidden">
+                        <span class="loading loading-dots loading-xl"></span>
+                     </section>
                 <div class="flex flex-col justify-between lg:flex-row">
                  <div>
                 <h2 class="text-xl font-semibold mt-4">Categories</h2>
@@ -57,6 +78,7 @@
                     <button class="space-y-2">All Trees</button>
                 </div>
             </div>
+            
                 <div id="card-container" class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10 cursor-pointer">
                      
                 </div>
@@ -83,7 +105,7 @@
         <section class="bg-[#CFF0DC60] ">
                 <h2 class="text-3xl font-bold  text-center pt-16">About the Campaign</h2>
 
-                <div class="flex flex-col lg:flex-row justify-center m-16 pb-16 w-11/12 mx-auto  items-center gap-10">
+                <div class="flex flex-col lg:flex-row justify-center mt-16 pb-16 w-11/12 mx-auto  items-center gap-10">
                     <div>
                         <img src="./assets/about.png" alt="">
                     </div>
@@ -100,6 +122,47 @@
                 </div>
 
         </section>
+        <section class="bg-[#CFF0DC] pb-28">
+            <h2 class="text-3xl font-bold  text-center py-16">Our Impact</h2>
+            <div class="flex flex-col lg:flex-row  justify-center items-center gap-24">
+                <div class="bg-white w-80 h-36 text-center  rounded-xl">
+                    <h3 class="text-[#15803D] text-2xl font-bold pt-14">500K+</h3>
+                    <p>Trees Planted</p>
+                </div>
+                <div class="bg-white w-80 h-36  text-center  rounded-xl">
+                    <h3 class="text-[#15803D] text-2xl  font-bold pt-14">120+</h3>
+                    <p>Communities Involved</p>
+                </div>
+                <div class="bg-white w-80 h-36 text-center  rounded-xl">
+                    <h3 class="text-[#15803D] text-2xl  font-bold pt-14">30+</h3>
+                    <p>Countries Reached</p>
+                </div>
+                
+            </div>
+        </section>
+        <section class="bg-[#15803D] " >
+            <h2 class="text-3xl font-bold  text-white text-center pt-16 pb-5">Plant a Tree Today</h2>
+           <div class="max-w-96 mx-auto pb-10">
+             <fieldset class="fieldset bg-[#CFF0DC60] border-base-300  rounded-box w-96 border mt-10   p-4">
+                
+
+                
+                <input type="text" class="input w-96" placeholder="Your Name" />
+
+                
+                <input type="email" class="input w-96 mt-3" placeholder="Email" />
+                <select class="input w-96 mt-3" placeholder="cars">
+  <option value="volvo">Number of trees</option>
+  <option value="toyota">1 Tree $5</option>
+  <option value="audi">5 Trees $25</option>
+  <option value="audi">10 Trees $50</option>
+</select>
+
+                <button class="btn  bg-[#FACC15] text-[#15803D] rounded-3xl mt-4">Donate Now</button>
+            </fieldset>
+           </div>
+
+        </section>
         <!-- Open the modal using ID.showModal() method -->
 <!-- <button class="btn" >open modal</button> -->
 <dialog id="my_modal_2" class="modal">
@@ -113,6 +176,9 @@
   </form>
 </dialog>
     </main>
+    <footer class="bg-green-900  h-14">
+        <h2 class="text-white text-center pt-5">© 2025 Green Earth. All Rights Reserved.</h2>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

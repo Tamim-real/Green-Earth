@@ -4,9 +4,11 @@ const cartItems = [];
 
 
 const loadAllPlants = ()=>{
+  manageSpinner(true)
   fetch('https://openapi.programming-hero.com/api/plants')
   .then((res)=> res.json())
   .then(data=> displayAllPlants(data.plants))
+  
 }
 
 const loadModalDetail= async (id)=>{
@@ -16,8 +18,21 @@ const loadModalDetail= async (id)=>{
 
     const detail =  await res.json();
     displayModalDetail(detail.plants);
+
+  
     
     
+}
+
+const manageSpinner=(status)=>{
+    if(status==true){
+      document.getElementById('spinner').classList.remove('hidden');
+      document.getElementById('card-container').classList.add('hidden')
+    }
+    else{
+      document.getElementById('card-container').classList.remove('hidden');
+      document.getElementById('spinner').classList.add('hidden')
+    }
 }
 
 const displayModalDetail=(word)=>{
@@ -80,13 +95,15 @@ const displayAllPlants =(allPlants)=>{
 
 
 
-
+manageSpinner(false)
 }
 
 document.getElementById('card-container').
 addEventListener('click', (e)=>{
   if(e.target.innerText === 'Add to Cart'){
     handleCartItems(e)
+
+    alert('This item has been added to cart')
     
    
     
@@ -143,6 +160,7 @@ const loadCategories=()=>{
 }
 
 const loadCards=(id)=>{
+    manageSpinner(true)
     const url = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(url)
     .then(res => res.json())
@@ -163,7 +181,7 @@ const displayCards =(details)=>{
       alt="Shoes" class="mt-5" />
   </figure>
   <div class="card-body">
-    <h2 class="card-title" onclick="my_modal_2.showModal()">
+    <h2 class="card-title" onclick="loadModalDetail(${detail.id})">
       ${detail.name}
       
     </h2>
@@ -182,7 +200,7 @@ const displayCards =(details)=>{
         cardContainer.append(card);
     }
 
-   
+   manageSpinner(false)
     
 }
 
@@ -253,7 +271,7 @@ addEventListener('click', (e)=>{
      
       e.target.parentNode.remove()
       
-     
+     cartItems.pop()
      
     
     
