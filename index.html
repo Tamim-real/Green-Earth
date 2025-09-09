@@ -8,7 +8,7 @@
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- google font integreted -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,7 @@
                     <button class="space-y-2">All Trees</button>
                 </div>
             </div>
-                <div id="card-container" class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10">
+                <div id="card-container" class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-10 cursor-pointer">
                      
                 </div>
                 
@@ -66,14 +66,52 @@
                 <div id="cart-container">
                     
                     
-                </div> 
+                </div>
+                <div class="flex justify-between mt-2">
+                    <p class="font-bold">Total :</p>
+                    <p id="final-amount" class="font-bold">0</p> 
+                </div>
              </div>  
             </div>
-            
+                
                 
             </div>
                 
         </section>
+
+
+        <section class="bg-[#CFF0DC60] ">
+                <h2 class="text-3xl font-bold  text-center pt-16">About the Campaign</h2>
+
+                <div class="flex flex-col lg:flex-row justify-center m-16 pb-16 w-11/12 mx-auto  items-center gap-10">
+                    <div>
+                        <img src="./assets/about.png" alt="">
+                    </div>
+                    <div>
+                        <p class="w-[400px]">
+                            Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.
+                        </p>
+                        <ul class="list-disc list-inside mt-4">
+                            <li>Restoration of natural habitats</li>
+                            <li>Improvement of air quality</li>
+                            <li>Support for local communities</li>
+                        </ul>
+                    </div>
+                </div>
+
+        </section>
+        <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" >open modal</button> -->
+<dialog id="my_modal_2" class="modal">
+  <div class="modal-box w-[420px]">
+    <div id="modal-container">
+
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
     </main>
     <script src="script.js"></script>
 </body>
